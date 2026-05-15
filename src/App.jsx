@@ -165,23 +165,23 @@ export default function App() {
             </nav>
 
             <div className="space-y-5 mt-12">
-              <div className="bg-gray-800 rounded-xl p-4">
-                <h3 className="font-bold text-lg">Status</h3>
-                <p className="text-gray-400 text-sm mt-1">
+              <div className="bg-gray-800 rounded-xl p-4 shadow-lg border border-gray-700">
+                <h3 className="font-bold text-lg mb-1">Status</h3>
+                <p className="text-green-400 text-sm font-semibold">
                   Tilgang til privat innhold
                 </p>
               </div>
 
-              <div className="bg-gray-800 rounded-xl p-4">
-                <h3 className="font-bold text-lg">Konto</h3>
-                <p className="text-gray-400 text-sm break-words mt-1">
+              <div className="bg-gray-800 rounded-xl p-4 shadow-lg border border-gray-700">
+                <h3 className="font-bold text-lg mb-1">Konto</h3>
+                <p className="text-gray-300 text-sm break-words font-medium">
                   {user.email}
                 </p>
               </div>
 
-              <div className="bg-gray-800 rounded-xl p-4">
-                <h3 className="font-bold text-lg">Meldinger</h3>
-                <p className="text-gray-400 text-sm mt-1">
+              <div className="bg-gray-800 rounded-xl p-4 shadow-lg border border-gray-700">
+                <h3 className="font-bold text-lg mb-1">Meldinger</h3>
+                <p className="text-gray-300 text-sm font-semibold">
                   {contacts.length} lagrede meldinger
                 </p>
               </div>
@@ -203,28 +203,30 @@ export default function App() {
           </h1>
 
           {error && (
-            <div className="mb-6 bg-red-900 border border-red-700 rounded-xl p-4 text-red-200">
+            <div className="mb-6 bg-red-900 border border-red-700 rounded-2xl p-4 text-red-400 font-semibold">
               {error}
             </div>
           )}
 
           {activePage === 'oversikt' && (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6">
-                <h2 className="text-2xl font-bold mb-2">Status</h2>
-                <p className="text-gray-400">Dashboardet er aktivt.</p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="bg-gray-900 border border-gray-700 rounded-2xl p-8 shadow-md flex flex-col justify-center items-center">
+                <h2 className="text-2xl font-bold mb-4">Status</h2>
+                <p className="text-green-400 font-semibold text-lg">Dashboardet er aktivt.</p>
               </div>
 
-              <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6">
-                <h2 className="text-2xl font-bold mb-2">Meldinger</h2>
-                <p className="text-gray-400">
-                  {contacts.length} meldinger lagret.
+              <div className="bg-gray-900 border border-gray-700 rounded-2xl p-8 shadow-md flex flex-col justify-center items-center">
+                <h2 className="text-2xl font-bold mb-4">Meldinger</h2>
+                <p className="text-gray-300 text-xl font-semibold">
+                  {contacts.length} {contacts.length === 1 ? 'melding' : 'meldinger'} lagret.
                 </p>
               </div>
 
-              <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6">
-                <h2 className="text-2xl font-bold mb-2">Konto</h2>
-                <p className="text-gray-400 break-words">{user.email}</p>
+              <div className="bg-gray-900 border border-gray-700 rounded-2xl p-8 shadow-md flex flex-col justify-center items-center break-words">
+                <h2 className="text-2xl font-bold mb-4">Konto</h2>
+                <p className="text-gray-300 text-center font-medium truncate max-w-full">
+                  {user.email}
+                </p>
               </div>
             </div>
           )}
@@ -243,9 +245,7 @@ export default function App() {
               </div>
 
               {contacts.length === 0 ? (
-                <p className="text-gray-400">
-                  Ingen meldinger funnet.
-                </p>
+                <p className="text-gray-400">Ingen meldinger funnet.</p>
               ) : (
                 <div className="space-y-5">
                   {contacts.map((contact) => (
